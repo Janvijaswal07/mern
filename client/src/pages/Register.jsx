@@ -81,7 +81,7 @@ const RegistrationForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">Phone:</label>
           <input
             type="tel"
             id="phone"
