@@ -1,0 +1,52 @@
+/* Reset some basic styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 20px; /* Padding around the navbar */
+}
+
+/* Center the content inside the navbar */
+.container {
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Center the items horizontally */
+    
+}
+
+/* Adjust the logo to be on the left */
+.logo {
+    margin-right: auto; /* Pushes the logo to the left */
+}
+
+.logo a {
+    text-decoration: none;
+    color: white; /* Logo color */
+    font-size: 20px; /* Font size */
+    font-weight: bold;
+}
+
+/* Center the navigation menu */
+nav ul {
+    list-style-type: none; /* Remove bullets */
+    display: flex; /* Horizontal layout */
+    justify-content: center;
+    gap: 50px; /* Spacing between nav items */
+}
+
+/* Navigation links */
+nav a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Link color */
+    padding: 8px 12px; /* Padding for clickable area */
+    transition: color 0.3s; /* Smooth color change on hover */
+}
+
+/* Hover effect for links */
+nav a:hover {
+    color: #ffcc00; /* Highlight link color on hover */
+}
