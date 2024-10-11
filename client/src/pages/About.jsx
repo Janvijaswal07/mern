@@ -44,7 +44,7 @@ const AboutPage = () => {
           <div className="team-member">
             <img src="https://via.placeholder.com/150" alt="Team Member 2" />
             <h3>Jane Smith</h3>
-            <p>CTO & Co-Founder</p>
+            <p>CTO  Co-Founder</p>
           </div>
           <div className="team-member">
             <img src="https://via.placeholder.com/150" alt="Team Member 3" />
