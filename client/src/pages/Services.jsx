@@ -7,7 +7,7 @@ const ServicesPage = () => {
       {/* Header Section */}
       <section className="services-header">
         <h1>Our Services</h1>
-        <p>We offer a wide range of services tailored to meet your needs. Explore our services below and discover how we can help you achieve your goals.</p>
+        <p>We offer a wide range of services tailored to meet your needs. Explore our services below and discover how we can help  achieve your goals.</p>
       </section>
 
       {/* Services List Section */}
