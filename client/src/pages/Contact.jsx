@@ -18,7 +18,7 @@ const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(contact);
-    // Add your login logic here
+    
   };
 
   return (
