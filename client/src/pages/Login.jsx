@@ -6,7 +6,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
-  const storeTokenInLS=useAuth();
+  const {storeTokenInLS}=useAuth();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

@@ -5,7 +5,7 @@ import { useAuth } from "../../store/auth";
 const RegistrationForm = () => {
 
   const navigate = useNavigate();
-  const storeTokenInLS=useAuth();
+  const {storeTokenInLS}=useAuth();
   const [formData, setFormData] = useState({
     username: "",
     email: "",

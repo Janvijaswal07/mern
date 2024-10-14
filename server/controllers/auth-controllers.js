@@ -58,4 +58,13 @@ const logout = async(req,res)=>{
         res.status(400).json({msg:"Backend error"});
     }
 }
-module.exports={home,register,login,logout};
+const users = async(req,res)=>{
+try {
+    const userData=req.user;
+    console.log(userData);
+    return res.status(200).json({msg:userData})
+} catch (error) {
+    res.status(400).json({msg:"Backend error from user router"})
+}
+}
+module.exports={home,register,login,logout,users};
