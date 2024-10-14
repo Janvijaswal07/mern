@@ -64,7 +64,7 @@ try {
     console.log(userData);
     return res.status(200).json({msg:userData})
 } catch (error) {
-    res.status(400).json({msg:"Backend error from user router"})
+    res.status(401).json({msg:"Backend error from user router"})
 }
 }
 module.exports={home,register,login,logout,users};

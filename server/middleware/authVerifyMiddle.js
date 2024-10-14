@@ -4,7 +4,7 @@ const token = req.header("Authorization")
 if(!token){
     res.status(401).json({msg:"token is not provider"})
 }
-//const jwtToken = token.replace()
+const jwtToken = token.replace()
 console.log(token);
 next();
 }
