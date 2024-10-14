@@ -6,7 +6,7 @@ const Logout = () => {
   const {LogoutUser}=useAuth();
   useEffect(()=>{
     LogoutUser();
-  },[LogoutUser])
+  })
   return <Navigate to="/login"/>
 }
 
