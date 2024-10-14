@@ -4,8 +4,8 @@ const token = req.header("Authorization")
 if(!token){
     res.status(401).json({msg:"token is not provider"})
 }
-const jwtToken = token.replace()
-console.log(token);
+const jwtToken = token.replace("Bearer","").trim();
+console.log(jwtToken);
 next();
 }
 module.exports= authVerifyMiddle;
