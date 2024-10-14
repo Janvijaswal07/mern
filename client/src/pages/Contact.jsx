@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import './ContactPage.css';
-
+import { useAuth } from '../../store/auth';
 const ContactPage = () => {
   const [contact, setContact] = useState({
     username: '',
     email: '',
     password: '',
   });
-
+const {user}=useAuth();
+const [userData,setData]=useState(true);
+if(userData&&user){
+  setContact({
+    username: user.username,
+    email: user.email
+  });
+  setData(false);
+}
   const handleChange = (e) => {
     setContact({
       ...contact,
@@ -20,6 +28,7 @@ const ContactPage = () => {
     console.log(contact);
     
   };
+
 
   return (
     <div className="contact-container">

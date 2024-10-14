@@ -1,21 +1,44 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext,useState } from 'react';
+import { createContext, useContext,useEffect,useState } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [token ,setToken]=useState(localStorage.getItem("token"));
+    const [user,setUser]=useState("");
     let isLoggedIn=!! token;
     const storeTokenInLS = (serverToken) => {
+        setToken(serverToken)
         localStorage.setItem("token", serverToken);
     };
+    const userAuthentication= async()=>{
+        try {
+            const response = await fetch("http://localhost:3000/api/auth/users",{
+                method:"GET",
+                headers:{
+                    Authorization:`Bearer ${token}`
+                },
+               
+            })
+            if(response.ok){
+                const data= await response.json();
+                console.log(data);
+                setUser(data)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(()=>{
+        userAuthentication();
+    },[])
     const LogoutUser=()=>{
         setToken("");
         return localStorage.removeItem("token");
     }
 
     return (
-        <AuthContext.Provider value={{ storeTokenInLS,LogoutUser,isLoggedIn }}>
+        <AuthContext.Provider value={{ storeTokenInLS,LogoutUser,isLoggedIn ,user}}>
             {children}
         </AuthContext.Provider>
     );
