@@ -5,9 +5,31 @@ const ContactPage = () => {
   const [contact, setContact] = useState({
     username: '',
     email: '',
-    password: '',
+    message: '',
   });
 const {user}=useAuth();
+const handleSubmit = async(e)=>{
+  e.preventDefault();
+  try {
+    const response = await fetch("http://localhost:3000/api/contactus/contact",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(contact)
+    })
+  if(response.ok){
+    setContact({
+      username: '',
+      email: '',
+      message: '',
+    })
+    alert("done")
+  }
+  } catch (error) {
+    console.log(error);
+  }
+}
 const [userData,setData]=useState(true);
 if(userData&&user){
   setContact({
@@ -23,11 +45,7 @@ if(userData&&user){
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(contact);
-    
-  };
+  
 
 
   return (
@@ -57,15 +75,15 @@ if(userData&&user){
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={contact.password}
-            onChange={handleChange}
-          />
-        </div>
+  <label htmlFor="message">Message</label>
+  <textarea
+    id="message"
+    name="message"
+    value={contact.message}
+    onChange={handleChange}
+  />
+</div>
+
 
         <button type="submit" className="submit-btn">Submit</button>
       </form>

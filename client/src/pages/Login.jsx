@@ -22,16 +22,18 @@ const LoginPage = () => {
       },
       body:JSON.stringify(formData)
     })
+    const res_data = await response.json();
+    console.log("response from server",res_data.msg);
     if(response.ok){
-      const res_data = await response.json();
-      console.log("response from server",res_data);
+      
+      
       storeTokenInLS(res_data.token)
       alert("Login successful")
       setFormData({email:"",password:""});
       // naviagte('/')
     }
     else{
-      alert("invalid credentail")
+      alert(res_data.message?res_data.message:res_data.msg);
       console.log("invalid credentail");
     }
     console.log(response);
