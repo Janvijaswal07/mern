@@ -27,10 +27,10 @@ const RegistrationForm = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      const data = await response.json();
+      console.log("Response from server", data);
       if (response.ok) {
-        const data = await response.json();
-        console.log("Response from server", data);
+       
         storeTokenInLS(data.token);
         alert("Registration successful");
         
@@ -43,7 +43,7 @@ const RegistrationForm = () => {
        
          navigate('/login');
       } else {
-        alert("Invalid credentials");
+        alert(data.message?data.message:data.msg);
         console.log("Invalid credentials");
       }
 
