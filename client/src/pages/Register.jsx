@@ -2,6 +2,7 @@ import { useState } from "react";
 import './RegistrationForm.css';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/auth";
+import {  toast } from 'react-toastify';
 const RegistrationForm = () => {
 
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const RegistrationForm = () => {
       if (response.ok) {
        
         storeTokenInLS(data.token);
-        alert("Registration successful");
+        toast.success("Registration successful");
         
         setFormData({
           username: "",
@@ -41,9 +42,9 @@ const RegistrationForm = () => {
           password: "",
         });
        
-         navigate('/login');
+         navigate('/');
       } else {
-        alert(data.message?data.message:data.msg);
+        toast.error(data.message?data.message:data.msg);
         console.log("Invalid credentials");
       }
 

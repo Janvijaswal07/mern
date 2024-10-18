@@ -8,7 +8,7 @@ const contactSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    password:{
+    message:{
         type:String,
         required:true
     }

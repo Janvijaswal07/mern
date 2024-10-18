@@ -1,4 +1,5 @@
 import  { useState } from 'react';
+import {  toast } from 'react-toastify';
 import './LoginPage.css';
 import { useAuth } from '../../store/auth';
 const LoginPage = () => {
@@ -28,12 +29,12 @@ const LoginPage = () => {
       
       
       storeTokenInLS(res_data.token)
-      alert("Login successful")
+      toast.success("Login successful")
       setFormData({email:"",password:""});
       // naviagte('/')
     }
     else{
-      alert(res_data.message?res_data.message:res_data.msg);
+      toast.error(res_data.message?res_data.message:res_data.msg);
       console.log("invalid credentail");
     }
     console.log(response);

@@ -19,7 +19,7 @@ const ServicesPage = () => {
           );
         })
       ) : (
-        <p>No services available</p>
+        <p>No services available.</p>
       )}
     </div>
   );
