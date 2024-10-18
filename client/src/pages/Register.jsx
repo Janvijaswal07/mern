@@ -42,7 +42,7 @@ const RegistrationForm = () => {
           password: "",
         });
        
-         navigate('/');
+         navigate('/login');
       } else {
         toast.error(data.message?data.message:data.msg);
         console.log("Invalid credentials");
