@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
             })
             if(response.ok){
                 const data= await response.json();
-                // console.log(data.userData);
+                 console.log(data.userData);
                 setUser(data.userData)
             }
         } catch (error) { 
