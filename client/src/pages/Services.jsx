@@ -11,7 +11,7 @@ const ServicesPage = () => {
           const { services, description, price, product } = currentElem;
           return (
             <section className="services-header" key={index}>
-              <h1>{services}</h1>
+              <h1>{services}</h1> 
               <p>{description}</p>
               <p>{price}</p>
               <p>{product}</p>

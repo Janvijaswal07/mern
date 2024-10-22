@@ -14,7 +14,7 @@ const register = async(req,res)=>{
         let {username,email,phone,password}=req.body;
         const userExist = await user.findOne({email:email});
         if(userExist){
-            res.status(400).json({msg:"user is already exist"});   
+            res.json({msg:"user is already exist"});   
         }
         const hash_password = await bcrypt.hash(password,10);
         const createdUser = await user.create({

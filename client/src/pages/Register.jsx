@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/auth";
 import {  toast } from 'react-toastify';
 const RegistrationForm = () => {
-
   const navigate = useNavigate();
   const {storeTokenInLS}=useAuth();
   const [formData, setFormData] = useState({
@@ -12,6 +11,7 @@ const RegistrationForm = () => {
     email: "",
     phone: "",
     password: "",
+
   });
 
   const handleChange = (e) => {
