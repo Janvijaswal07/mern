@@ -6,6 +6,8 @@ const router = require('./router/auth-router');
 const connectDB = require('./utils/db');
 const service = require('./router/service-router')
 const contact = require('./router/contact-router');
+const adminRouter = require('./router/admin-router');
+
 const { required } = require('./validator/auth-validator');
 const chalk = require("chalk")
 
@@ -20,7 +22,8 @@ const corsOptions = {
 app.use(express.json());
 app.use('/api/auth',router);
 app.use('/api/contactus',contact);
-app.use('/api/services',service)
+app.use('/api/services',service);
+app.use('/api/admin',adminRouter);
 const port = process.env.PORT;
 
 connectDB().then(()=>{
