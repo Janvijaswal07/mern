@@ -6,7 +6,7 @@ const adminMiddleware= async (req,res,next)=>{
        }
         next();
     } catch (error) {
-        console.log(error);
+        console.log("errr from admin middleware",error);
     }
 }
 module.exports=adminMiddleware;
