@@ -1,61 +1,63 @@
-/* eslint-disable react/prop-types */
-import { createContext, useContext,useEffect,useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [token ,setToken]=useState(localStorage.getItem("token"));
-    const [user,setUser]=useState("");
-    const [service,setService]=useState();
-    let isLoggedIn=!! token;
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    const [user, setUser] = useState("");
+    const [service, setService] = useState();
+    const isLoggedIn = !!token;
+
     const storeTokenInLS = (serverToken) => {
-        setToken(serverToken)
+        setToken(serverToken);
         localStorage.setItem("token", serverToken);
     };
-    const userAuthentication= async()=>{
+
+    const userAuthentication = async () => {
+        if (!token) return; // Avoid fetch if no token
         try {
-            const response = await fetch("http://localhost:3000/api/auth/users",{
-                method:"GET",
-                headers:{
-                    Authorization:`Bearer ${token}`
-                },
-               
-            })
-            if(response.ok){
-                const data= await response.json();
-                // console.log(data.userData);
-                setUser(data.userData)
+            const response = await fetch("http://localhost:3000/api/auth/users", {
+                method: "GET",
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setUser(data.userData);
             }
-        } catch (error) { 
+        } catch (error) {
             console.log(error);
         }
-    }
-    const servicesDataFetch= async()=>{
+    };
+
+    const servicesDataFetch = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/services/service",{
-                method:"GEt"
-            })
-            if(response.ok){
+            const response = await fetch("http://localhost:3000/api/services/service", {
+                method: "GET"
+            });
+            if (response.ok) {
                 const data = await response.json();
                 console.log(data.msg);
                 setService(data.msg);
-
             }
         } catch (error) {
-            console.log("services server error",error);
+            console.log("services server error", error);
         }
-    }
-    useEffect(()=>{
-        userAuthentication();
-        servicesDataFetch();
-    },[])
-    const LogoutUser=()=>{
+    };
+
+    useEffect(() => {
+        if (token) {
+            userAuthentication();
+            servicesDataFetch();
+        }
+    }, [token]);
+
+    const LogoutUser = () => {
         setToken("");
-        return localStorage.removeItem("token");
-    }
+        localStorage.removeItem("token");
+    };
 
     return (
-        <AuthContext.Provider value={{ storeTokenInLS,LogoutUser,isLoggedIn ,user,service}}>
+        <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, service }}>
             {children}
         </AuthContext.Provider>
     );
