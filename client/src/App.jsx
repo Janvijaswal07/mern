@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import AdminUser from './layouts/AdminUser';
 import AdminLayouts from './layouts/AdminLayouts';
 import AdminContact from './layouts/AdminContact';
+import Userdata from './pages/Userdata';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/logout' element={<Logout />} />
+          <Route path='/userdata' element={<Userdata />} />
           <Route path='/admin' element={<AdminLayouts/>}>
           <Route path='users' element={<AdminUser/>}/>
           <Route path='contacts' element={<AdminContact/>}/>
