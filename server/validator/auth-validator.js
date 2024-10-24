@@ -8,7 +8,7 @@ const loginSchema =z.object({
     password:z
     .string({required_error:"Password is requied"})
     .trim()
-    .min(7,{message:"Password must be atlest 3 chars"})
+    .min(3,{message:"Password must be atlest 3 chars"})
     .max(100,{message:"Password must be not more then 100 chars"}),
 })
 

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../store/auth';
+import {  toast } from 'react-toastify';
 import './AdminUser.css';
 const AdminUser = () => {
     const {bearerToken}= useAuth();
@@ -21,15 +22,37 @@ const AdminUser = () => {
 
             const data = await response.json();
             
-            console.log(Array.isArray(data)); // Should log true if it's an array
-            console.log("user",data.msg);
+            // console.log(Array.isArray(data)); // Should log true if it's an array
+            // console.log("user",data.msg);
             setData(data.msg)
         } catch (error) {
             console.log("error from adminUser",error);
         }
     }
+    const userDeleteById= async(id)=>{
+        try {
+            const response =await fetch(`http://localhost:3000/api/admin/user/delete/${id}`,{
+                method:"DELETE",
+                headers:{
+                    Authorization:bearerToken
+                },
+            })
+            if (response.ok) {
+            getUserAllData();
+            }
+  
+
+            const data = await response.json();
+            toast.dark("delete successful")
+            console.log("after delete data",data);
+           
+        } catch (error) {
+            console.log("error from user delete route in frontend",error);
+        }
+    }
     useEffect(()=>{
         getUserAllData();
+        
 },[])
 return (
     <>
@@ -52,7 +75,7 @@ return (
                         <td>{curUser.email}</td>
                         <td>{curUser.phone}</td>
                         <td><button className="edit-btn">Edit</button></td>
-                        <td><button className="delete-btn">Delete</button></td>
+                        <td><button  onClick={()=> userDeleteById(curUser._id)} className="delete-btn">Delete</button></td>
                     </tr>
                 ))}
             </tbody>
