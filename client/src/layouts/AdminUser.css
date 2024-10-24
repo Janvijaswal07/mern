@@ -1,0 +1,78 @@
+/* AdminUser.css */
+.admin-header {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.user-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.user-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.edit-btn {
+    background-color: #4CAF50; /* Green */
+}
+
+.delete-btn {
+    background-color: #f44336; /* Red */
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+}
+
+@media (max-width: 768px) {
+    .user-table {
+        width: 100%;
+    }
+
+    .table-container {
+        padding: 0 10px;
+    }
+
+    .admin-header {
+        font-size: 1.5rem;
+    }
+}

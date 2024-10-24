@@ -3,11 +3,12 @@ import { createContext, useContext, useEffect, useState } from 'react';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUser] = useState("");
     const [service, setService] = useState();
     const isLoggedIn = !!token;
-
+    const bearerToken=`Bearer ${token}` ;
     const storeTokenInLS = (serverToken) => {
         setToken(serverToken);
         localStorage.setItem("token", serverToken);
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await fetch("http://localhost:3000/api/auth/users", {
                 method: "GET",
-                headers: { Authorization: `Bearer ${token}` },
+                headers: { Authorization:bearerToken },
             });
             if (response.ok) {
                 const data = await response.json();
@@ -57,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, service }}>
+        <AuthContext.Provider value={{ storeTokenInLS, LogoutUser, isLoggedIn, user, service,bearerToken }}>
             {children}
         </AuthContext.Provider>
     );
