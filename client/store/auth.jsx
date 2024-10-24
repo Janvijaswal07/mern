@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const userAuthentication = async () => {
-        if (!token) return; // Avoid fetch if no token
+        if (!token) return; 
         try {
             const response = await fetch("http://localhost:3000/api/auth/users", {
                 method: "GET",
